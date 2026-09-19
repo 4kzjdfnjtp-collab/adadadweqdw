@@ -26,7 +26,9 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Build .app
-        run: ./scripts/build-mac-app.sh "${{ matrix.rid }}"
+        run: |
+          chmod +x ./scripts/build-mac-app.sh
+          bash ./scripts/build-mac-app.sh "${{ matrix.rid }}"
 
       - name: Upload app zip
         uses: actions/upload-artifact@v4
